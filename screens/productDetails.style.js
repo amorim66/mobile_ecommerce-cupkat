@@ -4,7 +4,7 @@ import {COLORS,SIZES} from '../constants/index'
 const styles = StyleSheet.create({
     container:{
         flex: 1,
-        backgroundColor: COLORS.lightWhite   
+        backgroundColor: COLORS.green 
     },
     upperRow:{
         marginHorizontal: 20,
