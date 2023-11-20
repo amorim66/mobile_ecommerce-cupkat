@@ -4,7 +4,7 @@ import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback } from 'react';
 import BottomTabNavigation from './navigation/BottomTabNavigation';
-import { Cart, ProductDetails, NewRivals } from './screens';
+import { Cart, ProductDetails, NewRivals, LoginPage, Favorites, Orders, SignUp} from './screens';
 
 
 
@@ -22,13 +22,13 @@ export default function App() {
   })
 
   const onLayoutRootView = useCallback(async () => {
-    
-    if(fontsLoaded) {
+
+    if (fontsLoaded) {
       await SplashScreen.hideAsync();
     }
-  }, [fontsLoaded] );
+  }, [fontsLoaded]);
 
-  if(!fontsLoaded){
+  if (!fontsLoaded) {
     return null;
   }
 
@@ -39,27 +39,50 @@ export default function App() {
         <Stack.Screen
           name='Bottom Navigation'
           component={BottomTabNavigation}
-          options={{headerShown:false}}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen
           name='Cart'
           component={Cart}
-          options={{headerShown:false}}
+          options={{ headerShown: false }}
         />
-        
+
         <Stack.Screen
           name='ProductDetails'
           component={ProductDetails}
-          options={{headerShown:false}}
+          options={{ headerShown: false }}
         />
-        
+
         <Stack.Screen
           name='ProductList'
           component={NewRivals}
-          options={{headerShown:false}}
+          options={{ headerShown: false }}
         />
 
+        <Stack.Screen
+          name='Login'
+          component={LoginPage}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name='Orders'
+          component={Orders}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name='Favorites'
+          component={Favorites}
+          options={{ headerShown: false }}
+        />
+        
+        <Stack.Screen
+          name='SignUp'
+          component={SignUp}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -15,7 +15,7 @@ const Search = () => {
   const handleSearch = async () => {
 
     try {
-      const response = await axios.get(`http://192.168.0.14:3000/api/products/search/${searchKey}`);
+      const response = await axios.get(`https://api-gq7y.onrender.com/api/products/search/${searchKey}`);
       setSearchResults(response.data)
       
     } catch (error) {
