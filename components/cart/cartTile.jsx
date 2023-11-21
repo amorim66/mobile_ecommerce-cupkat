@@ -5,7 +5,7 @@ import styles from '../../screens/cart.style'
 import {AntDesign} from '@expo/vector-icons'
 import { COLORS } from '../../constants'
 
-const CartTile = ({item, onPress, isSelected}) => {
+const CartTile = ({item, onPress, isSelected, onDelete}) => {
   return (
     <TouchableOpacity style={styles.favContainer(!isSelected ? "#FFF" : COLORS.secondary)} onPress={onPress}>
         <View style={styles.imageContainer}>
@@ -24,7 +24,7 @@ const CartTile = ({item, onPress, isSelected}) => {
 
         <TouchableOpacity
         style={{paddingBottom: 20, paddingLeft: 75}}
-        onPress={()=> {}}
+        onPress={onDelete}
         >
             <AntDesign
                 name='delete'

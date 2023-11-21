@@ -62,21 +62,36 @@ const Profile = ({ navigation }) => {
     )
   }
 
+  const cacheClear = async()=>{
+    const id = await AsyncStorage.getItem('id');
+    const userId = `favorites${JSON.parse(id)}`;
+    try {
+      await AsyncStorage.removeItem(userId);
+      navigation.replace('Bottom Navigation')
+    } catch (error) {
+      console.log("Erro ao fazer logout", error);
+    }
+  };
+
+
   const clearCache = () => {
     Alert.alert(
-      "Clear Cache",
+      "Limpar cache",
       "Tem certeza de que quer deletar dados salvos do seu dispositivo?",
       [
         {
-          text: "Cancel", onPress: () => console.log("cancel pressed")
+          text: "Cancelar",
+          onPress: () => console.log("cancel pressed"),
+          style: "cancel" // Esta opção faz com que o botão tenha um estilo de cancelamento
         },
         {
-          text: "Continue", onPress: () => console.log("clear cache pressed")
-        },
-        { defaultIndex: 1 }
-      ]
-    )
-  }
+          text: "Continue",
+          onPress: () => cacheClear()
+        }
+      ],
+      { cancelable: false } // Esta opção impede que o Alert seja fechado tocando fora dele ou pressionando o botão de voltar
+    );
+  };
 
   const deleteUser = async () => {
     try {
@@ -144,7 +159,7 @@ const Profile = ({ navigation }) => {
 
         <View style={style.profileContainer}>
           <Image
-            source={require('../assets/images/profile.jpeg')}
+            source={require('../assets/images/gatinho.jpg')}
             style={style.profile}
           />
           <Text style={style.name}>

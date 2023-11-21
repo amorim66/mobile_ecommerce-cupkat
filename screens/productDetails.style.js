@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.green 
     },
+
     upperRow:{
         marginHorizontal: 20,
         flexDirection: "row",

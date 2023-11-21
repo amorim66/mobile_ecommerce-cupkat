@@ -21,6 +21,31 @@ const Cart = ({ navigation }) => {
     console.log("Selected item:", selectedItem);
   }, [selectedItem]);
 
+  const deleteCartItem = async (item) => {
+    try {
+      // Faça a chamada à API para excluir o item do carrinho
+      const response = await fetch(`https://api-gq7y.onrender.com/api/carts/${item._id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          // Inclua quaisquer cabeçalhos adicionais necessários, como tokens de autenticação
+        },
+      });
+
+      if (response.ok) {
+        console.log(`Item do carrinho excluído com sucesso: ${item._id}`);
+        // Atualize os dados chamando refetch ou outra lógica adequada
+        refetch();
+      } else {
+        console.error('Erro ao excluir item do carrinho:', response.status, response.statusText);
+        // Lidere com o erro, exiba uma mensagem de erro ao usuário, se necessário
+      }
+    } catch (error) {
+      console.error('Erro ao excluir item do carrinho:', error);
+      // Lidere com o erro, exiba uma mensagem de erro ao usuário, se necessário
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.titleRow}>
@@ -35,11 +60,7 @@ const Cart = ({ navigation }) => {
           data={data}
           keyExtractor={(item) => item._id}
           renderItem={({ item }) =>
-            <CartTile
-              item={item}
-              onPress={() => handleItemPress(item)}
-              isSelected={selectedItem === item}
-            />
+          <CartTile item={item} onPress={() => handleItemPress(item)} onDelete={() => deleteCartItem(item)} isSelected={selectedItem === item} />
           }
         />)}
 

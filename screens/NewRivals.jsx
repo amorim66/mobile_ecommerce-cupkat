@@ -20,7 +20,7 @@ const NewRivals = ({navigation}) => {
                         color={COLORS.lightWhite} />
                     </TouchableOpacity>
 
-                    <Text style={styles.heading}> Products </Text>
+                    <Text style={styles.heading}> Produtos </Text>
                 </View>
                 <ProductList />
             </View>

@@ -12,7 +12,7 @@ const Welcome = (color, top) => {
         return (
             <View>
                 <View style={styles.container}>
-                    <Text style={styles.welcomeTxt(COLORS.black, SIZES.xSmall)}> Find The Most</Text>
+                    <Text style={styles.welcomeTxt(COLORS.black, SIZES.xSmall)}>Bem-vindo, a</Text>
                     <Text style={styles.welcomeTxt(COLORS.primary, 0)}> Cupkat</Text>
                 </View>
 
